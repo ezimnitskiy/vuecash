@@ -71,8 +71,8 @@ const uint32_t CRYPTONOTE_MEMPOOL_TX_LIVETIME = 60 * 60 * 24;  // seconds, one d
 // const size_t FUSION_TX_MIN_INPUT_COUNT = 12;
 // const size_t FUSION_TX_MIN_IN_OUT_COUNT_RATIO = 4;
 
-const uint32_t UPGRADE_HEIGHT_V2 = 546602;
-const uint32_t UPGRADE_HEIGHT_V3 = 985548;
+const uint32_t UPGRADE_HEIGHT_V2 = 1;
+const uint32_t UPGRADE_HEIGHT_V3 = 30;
 
 const char CRYPTONOTE_BLOCKS_FILENAME[]       = "blocks.bin";
 const char CRYPTONOTE_BLOCKINDEXES_FILENAME[] = "blockindexes.bin";
