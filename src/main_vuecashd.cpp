@@ -27,9 +27,9 @@ Options:
   --allow-local-ip                   Allow local ip add to peer list, mostly in debug purposes.
   --hide-my-port                     DEPRECATED. Do not announce yourself as peerlist candidate. Use --p2p-external-port=0 instead.
   --testnet                          Configure for testnet.
-  --p2p-bind-address=<ip:port>       Interface and port for P2P network protocol [default: 0.0.0.0:8180].
-  --p2p-external-port=<port>         External port for P2P network protocol, if port forwarding used with NAT [default: 8080].
-  --vuecashd-bind-address=<ip:port> Interface and port for vuecashd RPC [default: 0.0.0.0:8181].
+  --p2p-bind-address=<ip:port>       Interface and port for P2P network protocol [default: 0.0.0.0:18080].
+  --p2p-external-port=<port>         External port for P2P network protocol, if port forwarding used with NAT [default: 18080].
+  --vuecashd-bind-address=<ip:port> Interface and port for vuecashd RPC [default: 0.0.0.0:18081].
   --seed-node-address=<ip:port>      Specify list (one or more) of nodes to start connecting to.
   --priority-node-address=<ip:port>  Specify list (one or more) of nodes to connect to and attempt to keep the connection open.
   --exclusive-node-address=<ip:port> Specify list (one or more) of nodes to connect to only. All other nodes including seed nodes will be ignored.
