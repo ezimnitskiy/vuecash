@@ -17,6 +17,7 @@
 #include "platform/PathTools.hpp"
 #include "seria/BinaryInputStream.hpp"
 #include "seria/BinaryOutputStream.hpp"
+//#include <iostream>
 
 using namespace common;
 using namespace vuecash;
@@ -79,12 +80,18 @@ Currency::Currency(bool is_testnet)
 		upgrade_height_v2 = 0;
 		upgrade_height_v3 = static_cast<Height>(-1);
 	}
+
+	//AccountPublicAddress ac = boost::value_initialized<AccountPublicAddress>();
+  	//construct_miner_tx(0, 0, 0, 0, 0, 0, ac, genesis_block_template.base_transaction); // zero fee in genesis
+  	//BinaryArray txb = seria::to_binary(genesis_block_template.base_transaction);
+  	//std::string hex_tx_represent = common::to_hex(txb);
+
+  	//std::cout << "const char GENESIS_COINBASE_TX_HEX[] = \"" << hex_tx_represent << "\";" << std::endl;
+
 	// Hard code coinbase tx in genesis block, because through generating tx use
 	// random, but genesis should be always
 	// the same
-	std::string genesis_coinbase_tx_hex =
-	    "010a01ff0001ffffffffffff0f029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f"
-	    "5142ee494ffbbd08807121013c086a48c15fb637a96991bc6d53caf77068b5ba6eeb3c82357228c49790584a";
+	std::string genesis_coinbase_tx_hex = GENESIS_COINBASE_TX_HEX;
 	BinaryArray miner_tx_blob;
 
 	bool r = from_hex(genesis_coinbase_tx_hex, miner_tx_blob);
