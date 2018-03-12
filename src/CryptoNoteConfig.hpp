@@ -29,14 +29,14 @@ static_assert(EMISSION_SPEED_FACTOR <= 8 * sizeof(uint64_t), "Bad EMISSION_SPEED
 
 const size_t CRYPTONOTE_REWARD_BLOCKS_WINDOW = 100;
 const size_t CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE =
-    100000;  // size of block (bytes) after which reward for block calculated using block size
+    20000;  // size of block (bytes) after which reward for block calculated using block size
 const size_t CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V2 = 20000;
 const size_t CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_V1 = 10000;
 // const size_t CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE_CURRENT = CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE;
 const size_t CRYPTONOTE_COINBASE_BLOB_RESERVED_SIZE = 600;
 const size_t CRYPTONOTE_DISPLAY_DECIMAL_POINT       = 8;
-const uint64_t MINIMUM_FEE                          = 1000000;  // pow(10, 6)
-const uint64_t DEFAULT_DUST_THRESHOLD               = 1000000;  // pow(10, 6)
+const uint64_t MINIMUM_FEE                          = 100000;  // pow(10, 5)
+const uint64_t DEFAULT_DUST_THRESHOLD               = 100000;  // pow(10, 6)
 
 const uint32_t DIFFICULTY_TARGET = 120;  // seconds
 constexpr uint32_t EXPECTED_NUMBER_OF_BLOCKS_PER_DAY(uint32_t difficulty_target) {
@@ -79,7 +79,7 @@ const char CRYPTONOTE_BLOCKINDEXES_FILENAME[] = "blockindexes.bin";
 }  // parameters
 
 const char CRYPTONOTE_NAME[] = "vuecash";
-const char GENESIS_COINBASE_TX_HEX[] = "010a01ff0001ffffffffffff0f029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd0880712101127b4e07ddba6fa896e8d9311325d9faa5ee4917a62c937682dcc3f0511fc98b";
+const char GENESIS_COINBASE_TX_HEX[] = "010a01ff0001ffffffffffff0f029b2e4c0281c0b02e7c53291a94d1d0cbff8883f8024f5142ee494ffbbd08807121017721dcf3189a8dbb18882fc751a7e6c45335461d616a87f18a7a4e4d42deddde";
 
 const uint8_t CURRENT_TRANSACTION_VERSION = 1;
 
@@ -95,7 +95,7 @@ const size_t P2P_LOCAL_WHITE_PEERLIST_LIMIT = 1000;
 const size_t P2P_LOCAL_GRAY_PEERLIST_LIMIT  = 5000;
 
 const size_t P2P_CONNECTION_MAX_WRITE_BUFFER_SIZE        = 32 * 1024 * 1024;  // 32 Mb
-const uint32_t P2P_DEFAULT_CONNECTIONS_COUNT             = 8;
+const uint32_t P2P_DEFAULT_CONNECTIONS_COUNT             = 1;
 const uint32_t P2P_DEFAULT_WHITELIST_CONNECTIONS_PERCENT = 70;
 const uint32_t P2P_DEFAULT_HANDSHAKE_INTERVAL            = 60;        // seconds
 const uint32_t P2P_DEFAULT_PACKET_MAX_SIZE               = 50000000;  // 50000000 bytes maximum packet size
