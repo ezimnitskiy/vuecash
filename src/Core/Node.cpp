@@ -484,6 +484,10 @@ std::unordered_map<std::string, Node::JSONRPCHandlerFunction> Node::m_jsonrpc_ha
     {api::vuecashd::GetBlockTemplate::method_legacy(), json_rpc::makeMemberMethodSeria(&Node::on_getblocktemplate)},
     {api::vuecashd::GetCurrencyId::method(), json_rpc::makeMemberMethodSeria(&Node::on_get_currency_id)},
     {api::vuecashd::GetCurrencyId::method_legacy(), json_rpc::makeMemberMethodSeria(&Node::on_get_currency_id)},
+    {api::vuecashd::GetBlockCount::method(), json_rpc::makeMemberMethodSeria(&Node::on_getblockcount)},
+    {api::vuecashd::GetBlockHeaderByHeight::method(), json_rpc::makeMemberMethodSeria(&Node::on_getblockheaderbyheight)},
+    {api::vuecashd::GetBlockHeaderByHash::method(), json_rpc::makeMemberMethodSeria(&Node::on_getblockheaderbyhash)},
+    {api::vuecashd::GetLastBlockHeader::method(), json_rpc::makeMemberMethodSeria(&Node::on_getlastblockheader)},
     {api::vuecashd::SubmitBlock::method(), json_rpc::makeMemberMethodSeria(&Node::on_submitblock)},
     {api::vuecashd::SubmitBlockLegacy::method(), json_rpc::makeMemberMethodSeria(&Node::on_submitblock_legacy)},
     {api::vuecashd::GetRandomOutputs::method(), json_rpc::makeMemberMethodSeria(&Node::on_get_random_outputs3)},
@@ -506,6 +510,30 @@ bool Node::on_get_random_outputs3(http::Client *, http::RequestData &&, json_rpc
 		auto &outs = response.outputs[amount];
 		outs.insert(outs.end(), random_outputs.begin(), random_outputs.end());
 	}
+	return true;
+}
+
+bool Node::on_getblockcount(http::Client *, http::RequestData &&raw_request, json_rpc::Request &&raw_js_request,
+    api::vuecashd::GetBlockCount::Request &&, api::vuecashd::GetBlockCount::Response &res) {
+	res.count = m_block_chain.get_tip_height();
+	return true;
+}
+
+bool Node::on_getblockheaderbyheight(http::Client *, http::RequestData &&raw_request, json_rpc::Request &&raw_js_request,
+    api::vuecashd::GetBlockHeaderByHeight::Request &&req, api::vuecashd::GetBlockHeaderByHeight::Response &res) {
+	res.block_header = m_block_chain.get_block_by_height(req.height);
+	return true;
+}
+
+bool Node::on_getblockheaderbyhash(http::Client *, http::RequestData &&raw_request, json_rpc::Request &&raw_js_request,
+    api::vuecashd::GetBlockHeaderByHash::Request &&req, api::vuecashd::GetBlockHeaderByHash::Response &res) {
+	res.block_header = m_block_chain.get_block_by_hash(req.hash);
+	return true;
+}
+
+bool Node::on_getlastblockheader(http::Client *, http::RequestData &&raw_request, json_rpc::Request &&raw_js_request,
+    api::vuecashd::GetLastBlockHeader::Request &&, api::vuecashd::GetLastBlockHeader::Response &res) {
+	res.block_header = m_block_chain.get_tip();
 	return true;
 }
 

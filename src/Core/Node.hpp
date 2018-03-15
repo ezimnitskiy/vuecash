@@ -58,6 +58,14 @@ public:
 	    api::vuecashd::GetBlockTemplate::Request &&r, api::vuecashd::GetBlockTemplate::Response &);
 	void getblocktemplate(
 	    const api::vuecashd::GetBlockTemplate::Request &, api::vuecashd::GetBlockTemplate::Response &);
+	bool on_getblockcount(http::Client *, http::RequestData &&, json_rpc::Request &&,
+	    api::vuecashd::GetBlockCount::Request &&, api::vuecashd::GetBlockCount::Response &);
+	bool on_getblockheaderbyheight(http::Client *, http::RequestData &&, json_rpc::Request &&,
+	    api::vuecashd::GetBlockHeaderByHeight::Request &&r, api::vuecashd::GetBlockHeaderByHeight::Response &);
+	bool on_getblockheaderbyhash(http::Client *, http::RequestData &&, json_rpc::Request &&,
+	    api::vuecashd::GetBlockHeaderByHash::Request &&r, api::vuecashd::GetBlockHeaderByHash::Response &);
+	bool on_getlastblockheader(http::Client *, http::RequestData &&, json_rpc::Request &&,
+	    api::vuecashd::GetLastBlockHeader::Request &&, api::vuecashd::GetLastBlockHeader::Response &);
 	bool on_get_currency_id(http::Client *, http::RequestData &&, json_rpc::Request &&,
 	    api::vuecashd::GetCurrencyId::Request &&, api::vuecashd::GetCurrencyId::Response &);
 	bool on_submitblock(http::Client *, http::RequestData &&, json_rpc::Request &&,

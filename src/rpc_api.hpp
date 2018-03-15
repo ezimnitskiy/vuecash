@@ -465,6 +465,48 @@ struct GetBlockTemplate {
 	};
 };
 
+struct GetBlockCount {
+	static std::string method() { return "get_block_count"; }
+	typedef EmptyStruct Request;
+	struct Response {
+		uint32_t count = 0;
+	};
+};
+
+struct GetBlockHeaderByHeight {
+	static std::string method() { return "get_block_header_by_height"; }
+	
+	struct Request {
+		Height height;
+	};
+
+	struct Response {
+		api::BlockHeader block_header;
+	};
+};
+
+struct GetBlockHeaderByHash {
+	static std::string method() { return "get_block_header_by_hash"; }
+	
+	struct Request {
+		Hash hash;
+	};
+
+	struct Response {
+		api::BlockHeader block_header;
+	};
+};
+
+struct GetLastBlockHeader {
+	static std::string method() { return "get_last_block_header"; }
+	
+	typedef EmptyStruct Request;
+
+	struct Response {
+		api::BlockHeader block_header;
+	};
+};
+
 struct GetCurrencyId {
 	static std::string method_legacy() { return "getcurrencyid"; }  // This name is used by old miners
 	static std::string method() { return "get_currency_id"; }
@@ -537,6 +579,12 @@ void ser_members(vuecash::api::vuecashd::CheckSendProof::Request &v, ISeria &s);
 void ser_members(vuecash::api::vuecashd::CheckSendProof::Response &v, ISeria &s);
 void ser_members(vuecash::api::vuecashd::GetBlockTemplate::Request &v, ISeria &s);
 void ser_members(vuecash::api::vuecashd::GetBlockTemplate::Response &v, ISeria &s);
+void ser_members(vuecash::api::vuecashd::GetBlockCount::Response &v, ISeria &s); // New
+void ser_members(vuecash::api::vuecashd::GetBlockHeaderByHeight::Request &v, ISeria &s); // New
+void ser_members(vuecash::api::vuecashd::GetBlockHeaderByHeight::Response &v, ISeria &s); // New
+void ser_members(vuecash::api::vuecashd::GetBlockHeaderByHash::Request &v, ISeria &s); // New
+void ser_members(vuecash::api::vuecashd::GetBlockHeaderByHash::Response &v, ISeria &s); // New
+void ser_members(vuecash::api::vuecashd::GetLastBlockHeader::Response &v, ISeria &s); // New
 void ser_members(vuecash::api::vuecashd::GetCurrencyId::Response &v, ISeria &s);
 void ser_members(vuecash::api::vuecashd::SubmitBlock::Request &v, ISeria &s);
 void ser_members(vuecash::api::vuecashd::SubmitBlockLegacy::Response &v, ISeria &s);

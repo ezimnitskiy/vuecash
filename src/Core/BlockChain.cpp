@@ -334,6 +334,15 @@ std::vector<api::BlockHeader> BlockChain::get_sync_headers(const std::vector<Has
 	return result;
 }
 
+api::BlockHeader BlockChain::get_block_by_height(uint32_t height) const {
+	Hash block_hash = read_chain(height);
+	return read_header(block_hash);
+}
+
+api::BlockHeader BlockChain::get_block_by_hash(Hash &bid) const {
+	return read_header(bid);
+}
+
 uint32_t BlockChain::find_blockchain_supplement(const std::vector<Hash> &remote_block_ids) const {
 	for (auto &&lit : remote_block_ids) {
 		api::BlockHeader header;

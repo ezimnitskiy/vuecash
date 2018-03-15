@@ -72,7 +72,8 @@ public:
 
 	bool internal_import();  // import some existing blocks from inside DB
 	Height internal_import_known_height() const { return m_internal_import_known_height; }
-
+	api::BlockHeader get_block_by_height(Height height) const;
+	api::BlockHeader get_block_by_hash(Hash &bid) const;
 protected:
 	bool read_next_internal_block(Hash &bid) const;
 	virtual bool check_standalone_consensus(

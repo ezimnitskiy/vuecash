@@ -446,15 +446,28 @@ void ser_members(vuecash::api::vuecashd::CheckSendProof::Request &v, ISeria &s) 
 void ser_members(vuecash::api::vuecashd::CheckSendProof::Response &v, ISeria &s) {
 	seria_kv("validation_error", v.validation_error, s);
 }
-/*void ser_members(vuecash::api::walletd::GetBlock::Request &v, ISeria &s) {
-        seria_kv("hash", v.hash, s);
-        seria_kv("height", v.height, s);
-}*/
+void ser_members(vuecash::api::vuecashd::GetBlockCount::Response &v, ISeria &s) {
+	seria_kv("count", v.count, s);
+}
+void ser_members(vuecash::api::vuecashd::GetBlockHeaderByHeight::Request &v, ISeria &s) {
+    seria_kv("height", v.height, s);
+}
+void ser_members(vuecash::api::vuecashd::GetBlockHeaderByHeight::Response &v, ISeria &s) {
+	seria_kv("block_header", v.block_header, s);
+}
+void ser_members(vuecash::api::vuecashd::GetBlockHeaderByHash::Request &v, ISeria &s) {
+    seria_kv("hash", v.hash, s);
+}
+void ser_members(vuecash::api::vuecashd::GetBlockHeaderByHash::Response &v, ISeria &s) {
+	seria_kv("block_header", v.block_header, s);
+}
+void ser_members(vuecash::api::vuecashd::GetLastBlockHeader::Response &v, ISeria &s) {
+	seria_kv("block_header", v.block_header, s);
+}
 void ser_members(vuecash::api::walletd::GetTransaction::Request &v, ISeria &s) { seria_kv("hash", v.hash, s); }
 void ser_members(vuecash::api::walletd::GetTransaction::Response &v, ISeria &s) {
 	seria_kv("transaction", v.transaction, s);
 }
-
 void ser_members(vuecash::api::vuecashd::GetBlockTemplate::Request &v, ISeria &s) {
 	seria_kv("reserve_size", v.reserve_size, s);
 	seria_kv("wallet_address", v.wallet_address, s);
