@@ -155,7 +155,6 @@ std::string BlockChainState::get_standalone_consensus_error(
 	if (block.transactions.size() != block.header.transaction_hashes.size())
 		return "WRONG_TRANSACTIONS_COUNT";
 	info.size_median      = m_next_median_size;
-	info.depth 			  = get_tip_height() - info.height;
 	info.timestamp_median = m_next_median_timestamp;
 	info.timestamp_unlock = m_next_unlock_timestamp;
 
