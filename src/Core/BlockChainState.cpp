@@ -155,6 +155,7 @@ std::string BlockChainState::get_standalone_consensus_error(
 	if (block.transactions.size() != block.header.transaction_hashes.size())
 		return "WRONG_TRANSACTIONS_COUNT";
 	info.size_median      = m_next_median_size;
+	info.depth 			  = get_tip_height() - info.height;
 	info.timestamp_median = m_next_median_timestamp;
 	info.timestamp_unlock = m_next_unlock_timestamp;
 
@@ -165,7 +166,6 @@ std::string BlockChainState::get_standalone_consensus_error(
 	auto next_block_granted_full_reward_zone = m_currency.block_granted_full_reward_zone_by_block_version(
 	    block.header.major_version);  // We will check version later in this fun
 	info.effective_size_median = std::max(info.size_median, next_block_granted_full_reward_zone);
-
 	size_t cumulative_size = 0;
 	for (auto &&raw_tx : pb.raw_block.transactions) {
 		if (raw_tx.size() > m_currency.max_transaction_allowed_size(info.effective_size_median)) {
