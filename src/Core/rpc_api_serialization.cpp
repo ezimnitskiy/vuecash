@@ -272,6 +272,7 @@ void ser_members(api::BlockHeader &v, ISeria &s) {
 	seria_kv("already_generated_coins", v.already_generated_coins, s);
 	seria_kv("already_generated_transactions", v.already_generated_transactions, s);
 	seria_kv("size_median", v.size_median, s);
+	seria_kv("depth", v.depth, s);
 	seria_kv("effective_size_median", v.effective_size_median, s);
 	seria_kv("timestamp_median", v.timestamp_median, s);
 	seria_kv("timestamp_unlock", v.timestamp_unlock, s);
