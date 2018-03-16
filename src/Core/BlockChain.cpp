@@ -175,6 +175,7 @@ BroadcastAction BlockChain::add_block(const PreparedBlock &pb, api::BlockHeader 
 	info.nonce               = pb.block.header.nonce;
 	info.hash                = pb.bid;
 	info.height              = prev_info.height + 1;
+	info.depth				 = get_tip_height() - info.height;
 	// Rest fields are filled by check_standalone_consensus
 	if (!check_standalone_consensus(pb, info, prev_info))
 		return BroadcastAction::BAN;

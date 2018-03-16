@@ -98,6 +98,7 @@ struct BlockHeader {
 	Amount already_generated_coins          = 0;
 	uint64_t already_generated_transactions = 0;
 	uint32_t size_median                    = 0;
+	uint32_t depth 							= 0;
 	uint32_t effective_size_median =
 	    0;  // max(100000, size_median) for block version 3, allows sudden peaks in network load.
 	Timestamp timestamp_median = 0;
@@ -115,6 +116,11 @@ struct Block {
 	api::BlockHeader header;
 	std::vector<api::Transaction>
 	    transactions;  // If got from walletd, will contain only transactions with transfers we can view.
+};
+
+struct AdditionalBlockHeader {
+	api::BlockHeader header;
+	uint32_t depth = 0;
 };
 
 struct Balance {
